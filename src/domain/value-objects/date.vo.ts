@@ -1,4 +1,4 @@
-import { ArgumentInvalidException } from 'src/exceptions/ArgumentInvalid.exception';
+import { ArgumentInvalidException } from 'src/exceptions/argument-invalid.exception';
 import {
   DomainPrimitive,
   ValueObject,
