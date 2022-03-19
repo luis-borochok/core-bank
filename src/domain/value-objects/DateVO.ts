@@ -1,5 +1,5 @@
 import { ArgumentInvalidException } from 'src/exceptions/ArgumentInvalid.exception';
-import { DomainPrimitive, ValueObject } from '../ValueObject.base';
+import { DomainPrimitive, ValueObject } from '../base-classes/ValueObject.base';
 
 export class DateVO extends ValueObject<Date> {
   constructor(value: Date | string | number) {

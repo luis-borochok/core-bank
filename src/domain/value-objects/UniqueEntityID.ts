@@ -1,6 +1,6 @@
 import { ArgumentInvalidException } from 'src/exceptions/ArgumentInvalid.exception';
 import { v4 as uuidV4, validate } from 'uuid';
-import { DomainPrimitive } from '../ValueObject.base';
+import { DomainPrimitive } from '../base-classes/ValueObject.base';
 import { ID } from './IdentifierVO';
 
 export class UUID extends ID {
