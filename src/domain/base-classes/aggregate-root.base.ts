@@ -1,6 +1,6 @@
-import { DomainEvent } from './domain-events/Event.base';
-import { DomainEvents } from './domain-events/Events';
-import { Entity } from './Entity.base';
+import { DomainEvents } from '../domain-events/events';
+import { Entity } from './entity.base';
+import { DomainEvent } from './event.base';
 
 export abstract class AggregateRoot<EntityProps> extends Entity<EntityProps> {
   private _domainEvents: DomainEvent[] = [];

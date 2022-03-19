@@ -1,5 +1,5 @@
-import { ArgumentNotProvidedException } from 'src/exceptions/ArgumentNotProvided.exception';
-import { Guard } from '../utils/Guard';
+import { ArgumentNotProvidedException } from 'src/exceptions/argument-not-provided.exception';
+import { Guard } from '../utils/guard';
 
 export type Primitives = string | number | boolean;
 export interface DomainPrimitive<T extends Primitives | Date> {

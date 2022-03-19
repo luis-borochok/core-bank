@@ -1,6 +1,6 @@
-import { ArgumentNotProvidedException } from 'src/exceptions/ArgumentNotProvided.exception';
-import { Guard } from '../../utils/Guard';
-import { UUID } from '../../value-objects/UniqueEntityID';
+import { ArgumentNotProvidedException } from 'src/exceptions/argument-not-provided.exception';
+import { Guard } from '../utils/guard';
+import { UUID } from '../value-objects/unique-entity-id.vo';
 
 export type EventProps<T> = Omit<T, 'id' | 'correlationId' | 'dateOccurred'> &
   Omit<DomainEvent, 'id' | 'correlationId' | 'dateOccurred'> & {

@@ -1,5 +1,5 @@
-import { DomainEvent } from './Event.base';
-import { DomainEventClass, DomainEvents } from './Events';
+import { DomainEventClass, DomainEvents } from '../domain-events/events';
+import { DomainEvent } from './event.base';
 
 export abstract class DomainEventHandler {
   constructor(private readonly event: DomainEventClass) {}

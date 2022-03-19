@@ -1,8 +1,8 @@
 import { Logger } from '@nestjs/common';
-import { ID } from '../../value-objects/IdentifierVO';
-import { AggregateRoot } from '../AggregateRoot.base';
-import { DomainEvent } from './Event.base';
-import { DomainEventHandler } from './EventHandler.base';
+import { AggregateRoot } from '../base-classes/aggregate-root.base';
+import { DomainEventHandler } from '../base-classes/event-handler.base';
+import { DomainEvent } from '../base-classes/event.base';
+import { ID } from '../value-objects/identifier.vo';
 
 type EventName = string;
 

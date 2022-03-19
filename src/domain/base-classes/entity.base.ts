@@ -1,8 +1,8 @@
-import { ArgumentInvalidException } from 'src/exceptions/ArgumentInvalid.exception';
-import { ArgumentNotProvidedException } from 'src/exceptions/ArgumentNotProvided.exception';
-import { Guard } from '../utils/Guard';
-import { DateVO } from '../value-objects/DateVO';
-import { ID } from '../value-objects/IdentifierVO';
+import { ArgumentInvalidException } from 'src/exceptions/argument-invalid.exception';
+import { ArgumentNotProvidedException } from 'src/exceptions/argument-not-provided.exception';
+import { Guard } from '../utils/guard';
+import { DateVO } from '../value-objects/date.vo';
+import { ID } from '../value-objects/identifier.vo';
 
 export interface BaseEntityProps {
   id: ID;
