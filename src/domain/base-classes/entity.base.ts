@@ -7,28 +7,20 @@ import { ID } from '../value-objects/identifier.vo';
 export interface BaseEntityProps {
   id: ID;
   createdAt: DateVO;
-  updatedAt: DateVO;
 }
 
 export interface CreateEntityProps<T> {
   id: ID;
   props: T;
   createdAt?: DateVO;
-  updatedAt?: DateVO;
 }
 
 export abstract class Entity<EntityProps> {
-  constructor({
-    id,
-    createdAt,
-    updatedAt,
-    props,
-  }: CreateEntityProps<EntityProps>) {
+  constructor({ id, createdAt, props }: CreateEntityProps<EntityProps>) {
     this.setId(id);
     this.validateProps(props);
     const now = DateVO.now();
     this._createdAt = createdAt || now;
-    this._updatedAt = updatedAt || now;
     this.props = props;
     this.validate();
   }
@@ -40,8 +32,6 @@ export abstract class Entity<EntityProps> {
 
   private readonly _createdAt: DateVO;
 
-  private _updatedAt: DateVO;
-
   get id(): ID {
     return this._id;
   }
@@ -52,10 +42,6 @@ export abstract class Entity<EntityProps> {
 
   get createdAt(): DateVO {
     return this._createdAt;
-  }
-
-  get updatedAt(): DateVO {
-    return this._updatedAt;
   }
 
   static isEntity(entity: unknown): entity is Entity<unknown> {
@@ -95,7 +81,6 @@ export abstract class Entity<EntityProps> {
     const propsCopy = {
       id: this._id,
       createdAt: this._createdAt,
-      updatedAt: this._updatedAt,
       ...this.props,
     };
     return Object.freeze(propsCopy);

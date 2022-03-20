@@ -12,3 +12,35 @@ export class CreateAccountResponseDTO {
   })
   id: string;
 }
+export class ConflictAccountExceptionDTO {
+  constructor(account: Account) {
+    this.message = account.id.value;
+  }
+  @ApiProperty({
+    type: 'string',
+    example: `Account with CPF '811.433.200-00' already exists`,
+  })
+  message: string;
+}
+export class BadRequestExceptionDTO {
+  constructor(account: Account) {
+    this.message = account.id.value;
+  }
+  @ApiProperty({
+    type: 'string',
+    examples: [`CPF has a incorrect format`],
+  })
+  message: string;
+
+  @ApiProperty({
+    type: 'number',
+    example: 400,
+  })
+  statusCode: number;
+
+  @ApiProperty({
+    type: 'string',
+    example: 'Bad Request',
+  })
+  error: string;
+}

@@ -1,8 +1,17 @@
-import { Body, Controller, HttpStatus, Post } from '@nestjs/common';
-import { ApiCreatedResponse, ApiOperation, ApiResponse } from '@nestjs/swagger';
+import { Body, Controller, Post } from '@nestjs/common';
+import {
+  ApiBadRequestResponse,
+  ApiConflictResponse,
+  ApiCreatedResponse,
+  ApiOperation,
+} from '@nestjs/swagger';
 import { CreateAccountService } from './create-account.service';
 import { CreateAccountRequestDTO } from './request.dto';
-import { CreateAccountResponseDTO } from './response.dto';
+import {
+  BadRequestExceptionDTO,
+  ConflictAccountExceptionDTO,
+  CreateAccountResponseDTO,
+} from './response.dto';
 
 export type responseId = {
   id: string;
@@ -17,8 +26,11 @@ export class CreateAccountController {
   @ApiCreatedResponse({
     type: CreateAccountResponseDTO,
   })
-  @ApiResponse({
-    status: HttpStatus.BAD_REQUEST,
+  @ApiConflictResponse({
+    type: ConflictAccountExceptionDTO,
+  })
+  @ApiBadRequestResponse({
+    type: BadRequestExceptionDTO,
   })
   async create(
     @Body() body: CreateAccountRequestDTO,

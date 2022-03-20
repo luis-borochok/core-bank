@@ -11,7 +11,7 @@ export abstract class TypeormEntityBase {
   id: string;
 
   @CreateDateColumn({
-    type: 'datetime',
+    type: 'timestamp',
     update: false,
   })
   createdAt: Date;
