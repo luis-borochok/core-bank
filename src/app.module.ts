@@ -4,6 +4,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { PostgresConnectionOptions } from 'typeorm/driver/postgres/PostgresConnectionOptions';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
+import { AccountModule } from './modules/account/account.module';
 
 @Module({
   imports: [
@@ -26,6 +27,7 @@ import { AppService } from './app.service';
         } as PostgresConnectionOptions),
       inject: [ConfigService],
     }),
+    AccountModule,
   ],
   controllers: [AppController],
   providers: [AppService],
