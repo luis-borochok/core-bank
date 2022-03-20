@@ -1,0 +1,15 @@
+version: '3.7'
+services:
+  app:
+    container_name: core-bank
+    build:
+      context: .
+      target: production
+    volumes:
+      - .:/home/node/core-bank
+      - /home/node/core-bank/node_modules
+    ports:
+      - ${SERVER_PORT}:${SERVER_PORT}
+    command: node dist/main.js
+    env_file:
+      - .env
