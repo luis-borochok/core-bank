@@ -26,3 +26,17 @@ COPY --from=builder --chown=node:node /home/node/node_modules/ ./node_modules/
 COPY --from=builder --chown=node:node /home/node/dist/ ./dist/
 
 CMD ["node", "dist/main.js"]
+
+FROM node:16-alpine as development
+
+ENV NODE_ENV development
+
+USER node
+WORKDIR /home/node
+
+COPY --chown=node:node package*.json ./
+RUN npm install
+
+COPY --chown=node:node . .
+
+RUN npm run build
