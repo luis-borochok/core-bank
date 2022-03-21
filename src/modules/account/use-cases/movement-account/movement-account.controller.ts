@@ -27,6 +27,6 @@ export class MovementAccountController {
       value,
     });
 
-    return null;
+    return;
   }
 }
