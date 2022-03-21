@@ -1,0 +1,158 @@
+{
+	"info": {
+		"_postman_id": "f05f1771-5d3b-445c-86f8-cece16703292",
+		"name": "core-bank",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Account",
+			"item": [
+				{
+					"name": "Create Account",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"cpf\": \"116.069.219-08\",\n    \"name\": \"Luis\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/accounts",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"accounts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get balance",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/accounts/balance/id?id=547546bb-ff50-4996-a263-6dc735e8dcab",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"accounts",
+								"balance",
+								"id"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "547546bb-ff50-4996-a263-6dc735e8dcab"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Debit account",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": \"ceb7a93a-a9dc-428e-b04d-87a52d126f6a\",\n    \"value\": 2000\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/accounts/debit/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"accounts",
+								"debit",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Movement account",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"creditAccountId\": \"547546bb-ff50-4996-a263-6dc735e8dcab\",\n    \"debitAccountId\": \"ceb7a93a-a9dc-428e-b04d-87a52d126f6a\",\n    \"value\": 2000\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/accounts/movement/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"accounts",
+								"movement",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Credit account",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"id\": \"547546bb-ff50-4996-a263-6dc735e8dcab\",\n  \"value\": 1000\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/accounts/credit/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"accounts",
+								"credit",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
