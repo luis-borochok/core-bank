@@ -1,3 +1,4 @@
+import { BadRequestException } from '@nestjs/common';
 import { AggregateRoot } from 'src/domain/base-classes/aggregate-root.base';
 import { ID } from 'src/domain/value-objects/identifier.vo';
 import { UUID } from 'src/domain/value-objects/unique-entity-id.vo';
@@ -28,6 +29,25 @@ export class Account extends AggregateRoot<AccountProps> {
 
   public get balance(): AccountBalance {
     return this.props.balance;
+  }
+
+  credit(value: number): void {
+    this.props.balance = new AccountBalance({
+      value: this.balance.value + value,
+    });
+    // add event to save operation as a history to account
+  }
+
+  debit(value: number): void {
+    if (this.props.balance.value < value) {
+      throw new BadRequestException(
+        `Account with ID ${this.id.value} don't have sufficient balance`,
+      );
+    }
+    this.props.balance = new AccountBalance({
+      value: this.props.balance.value - value,
+    });
+    // add event to save operation as a history to account
   }
 
   public validate(): void {

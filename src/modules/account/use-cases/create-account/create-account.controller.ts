@@ -1,4 +1,4 @@
-import { Body, Controller, Post } from '@nestjs/common';
+import { Body, Controller, Inject, Post } from '@nestjs/common';
 import {
   ApiBadRequestResponse,
   ApiConflictResponse,
@@ -15,7 +15,10 @@ import {
 
 @Controller('accounts')
 export class CreateAccountController {
-  constructor(private readonly createAccountService: CreateAccountService) {}
+  constructor(
+    @Inject(CreateAccountService)
+    private readonly createAccountService: CreateAccountService,
+  ) {}
 
   @Post('/')
   @ApiOperation({ summary: 'Create a account' })

@@ -1,9 +1,12 @@
+import { ApiProperty } from '@nestjs/swagger';
 import { Account } from '../../domain/account.entity';
 
 export class GetAccountBalanceResponseDTO {
   constructor(account: Account) {
-    this.value = account.balance.value;
+    this.balance = account.balance.value;
   }
-
-  value: number;
+  @ApiProperty({
+    example: 200,
+  })
+  balance: number;
 }
