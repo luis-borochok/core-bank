@@ -10,6 +10,7 @@ import { DebitAccountController } from './use-cases/debit-account/debit-account.
 import { DebitAccountService } from './use-cases/debit-account/debit-account.service';
 import { GetAccountService } from './use-cases/get-account/get-account.service';
 import { GetAccountBalanceController } from './use-cases/get-balance-account/get-balance.controller';
+import { MovementAccountController } from './use-cases/movement-account/movement-account.controller';
 
 @Module({
   imports: [TypeOrmModule.forFeature([AccountOrmEntity])],
@@ -18,6 +19,7 @@ import { GetAccountBalanceController } from './use-cases/get-balance-account/get
     GetAccountBalanceController,
     CreditAccountController,
     DebitAccountController,
+    MovementAccountController,
   ],
   providers: [
     CreateAccountService,
