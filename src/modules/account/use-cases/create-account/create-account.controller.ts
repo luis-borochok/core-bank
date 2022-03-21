@@ -13,10 +13,6 @@ import {
   CreateAccountResponseDTO,
 } from './response.dto';
 
-export type responseId = {
-  id: string;
-};
-
 @Controller('accounts')
 export class CreateAccountController {
   constructor(private readonly createAccountService: CreateAccountService) {}

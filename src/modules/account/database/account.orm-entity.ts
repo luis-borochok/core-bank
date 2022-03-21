@@ -1,5 +1,6 @@
-import { TypeormEntityBase } from 'src/infrastructure/base-classes/typeorm.entity.base';
+// import { TypeormEntityBase } from 'src/infrastructure/base-classes/typeorm.entity.base';
 import { Column, Entity } from 'typeorm';
+import { TypeormEntityBase } from '../../../infrastructure/base-classes/typeorm.entity.base';
 
 @Entity('accounts')
 export class AccountOrmEntity extends TypeormEntityBase {

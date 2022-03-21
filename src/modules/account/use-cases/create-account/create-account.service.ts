@@ -1,5 +1,6 @@
-import { ConflictException, Injectable } from '@nestjs/common';
+import { ConflictException, Inject, Injectable } from '@nestjs/common';
 import { AccountRepository } from '../../database/account.repository';
+import { AccountRepositoryPort } from '../../database/account.repository-port';
 import { Account } from '../../domain/account.entity';
 import { AccountCpf } from '../../domain/values-objects/account-cpf.vo';
 
@@ -10,7 +11,10 @@ export interface CreateAccountProps {
 
 @Injectable()
 export class CreateAccountService {
-  constructor(private accountRepo: AccountRepository) {}
+  constructor(
+    @Inject(AccountRepository)
+    private accountRepo: AccountRepositoryPort,
+  ) {}
   async createAccount(props: CreateAccountProps): Promise<Account> {
     const { cpf, name } = props;
 

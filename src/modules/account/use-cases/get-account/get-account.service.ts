@@ -1,5 +1,6 @@
-import { Injectable } from '@nestjs/common';
+import { Inject, Injectable } from '@nestjs/common';
 import { AccountRepository } from '../../database/account.repository';
+import { AccountRepositoryPort } from '../../database/account.repository-port';
 import { Account } from '../../domain/account.entity';
 
 export interface GetAccountProps {
@@ -8,7 +9,10 @@ export interface GetAccountProps {
 
 @Injectable()
 export class GetAccountService {
-  constructor(private accountRepo: AccountRepository) {}
+  constructor(
+    @Inject(AccountRepository)
+    private accountRepo: AccountRepositoryPort,
+  ) {}
   async getAccount(props: GetAccountProps): Promise<Account> {
     const { accountId } = props;
 
