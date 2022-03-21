@@ -6,6 +6,8 @@ import { CreateAccountController } from './use-cases/create-account/create-accou
 import { CreateAccountService } from './use-cases/create-account/create-account.service';
 import { CreditAccountController } from './use-cases/credit-account/credit-account.controller';
 import { CreditAccountService } from './use-cases/credit-account/credit-account.service';
+import { DebitAccountController } from './use-cases/debit-account/debit-account.controller';
+import { DebitAccountService } from './use-cases/debit-account/debit-account.service';
 import { GetAccountService } from './use-cases/get-account/get-account.service';
 import { GetAccountBalanceController } from './use-cases/get-balance-account/get-balance.controller';
 
@@ -15,11 +17,13 @@ import { GetAccountBalanceController } from './use-cases/get-balance-account/get
     CreateAccountController,
     GetAccountBalanceController,
     CreditAccountController,
+    DebitAccountController,
   ],
   providers: [
     CreateAccountService,
     GetAccountService,
     CreditAccountService,
+    DebitAccountService,
     AccountRepository,
   ],
 })

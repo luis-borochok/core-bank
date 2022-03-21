@@ -18,7 +18,7 @@ export class AccountBalance extends ValueObject<AccountBalanceProps> {
 
     if (props.value < 0) {
       throw new UnprocessableEntityException(
-        `Account cannot keep with negative values`,
+        `Account do not have balance to this operation`,
       );
     }
   }

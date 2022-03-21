@@ -1,4 +1,3 @@
-import { BadRequestException } from '@nestjs/common';
 import { AggregateRoot } from 'src/domain/base-classes/aggregate-root.base';
 import { ID } from 'src/domain/value-objects/identifier.vo';
 import { UUID } from 'src/domain/value-objects/unique-entity-id.vo';
@@ -39,11 +38,6 @@ export class Account extends AggregateRoot<AccountProps> {
   }
 
   debit(value: number): void {
-    if (this.props.balance.value < value) {
-      throw new BadRequestException(
-        `Account with ID ${this.id.value} don't have sufficient balance`,
-      );
-    }
     this.props.balance = new AccountBalance({
       value: this.props.balance.value - value,
     });

@@ -26,7 +26,7 @@ export class CreditAccountController {
   @ApiBadRequestResponse({
     type: BadRequestExceptionDTO,
   })
-  async create(
+  async credit(
     @Body() body: CreditAccountRequestDTO,
   ): Promise<CreditAccountResponseDTO> {
     const { id, value } = body;
