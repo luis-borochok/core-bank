@@ -1,7 +1,7 @@
 import { ConflictException, Injectable } from '@nestjs/common';
+import { AccountRepository } from '../../database/account.repository';
 import { Account } from '../../domain/account.entity';
-import { AccountCpf } from '../../domain/values-objects/AccountCpf.vo';
-import { AccountRepository } from '../database/account.repository';
+import { AccountCpf } from '../../domain/values-objects/account-cpf.vo';
 
 export interface CreateAccountProps {
   cpf: string;

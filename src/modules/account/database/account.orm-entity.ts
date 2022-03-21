@@ -12,4 +12,7 @@ export class AccountOrmEntity extends TypeormEntityBase {
 
   @Column()
   name: string;
+
+  @Column({ type: 'numeric', precision: 12, scale: 2, default: 0 })
+  balance: number;
 }

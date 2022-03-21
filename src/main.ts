@@ -1,6 +1,7 @@
 import { Logger, ValidationPipe } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
+import { types } from 'pg';
 import { AppModule } from './app.module';
 
 async function bootstrap() {
@@ -18,6 +19,8 @@ async function bootstrap() {
   });
   app.useGlobalPipes(new ValidationPipe());
 
+  // parser to postgres numeric values
+  types.setTypeParser(1700, (x) => parseFloat(x));
   await app.listen(3000);
   logger.log(`Server start at port ${3000}`);
 }

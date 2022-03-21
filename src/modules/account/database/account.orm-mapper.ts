@@ -4,8 +4,9 @@ import {
   OrmEntityProps,
   OrmMapper,
 } from 'src/infrastructure/base-classes/orm-mapper.base';
-import { Account, AccountProps } from '../../domain/account.entity';
-import { AccountCpf } from '../../domain/values-objects/AccountCpf.vo';
+import { Account, AccountProps } from '../domain/account.entity';
+import { AccountBalance } from '../domain/values-objects/account-balance.vo';
+import { AccountCpf } from '../domain/values-objects/account-cpf.vo';
 import { AccountOrmEntity } from './account.orm-entity';
 
 export class AccountOrmMapper extends OrmMapper<Account, AccountOrmEntity> {
@@ -15,6 +16,7 @@ export class AccountOrmMapper extends OrmMapper<Account, AccountOrmEntity> {
     const ormProps: OrmEntityProps<AccountOrmEntity> = {
       cpf: props.cpf.value,
       name: props.name,
+      balance: props.balance.value,
     };
     return ormProps;
   }
@@ -28,6 +30,7 @@ export class AccountOrmMapper extends OrmMapper<Account, AccountOrmEntity> {
         cpf: ormEntity.cpf,
       }),
       name: ormEntity.name,
+      balance: new AccountBalance({ value: ormEntity.balance }),
     };
     return { id, props };
   }

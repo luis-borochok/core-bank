@@ -2,7 +2,7 @@ import { Injectable, Logger, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { TypeormRepositoryBase } from 'src/infrastructure/base-classes/typeorm.repository.base';
 import { Repository } from 'typeorm';
-import { Account, AccountProps } from '../../domain/account.entity';
+import { Account, AccountProps } from '../domain/account.entity';
 import { AccountOrmEntity } from './account.orm-entity';
 import { AccountOrmMapper } from './account.orm-mapper';
 import { AccountRepositoryPort } from './account.repository-port';
@@ -49,5 +49,21 @@ export class AccountRepository
       return true;
     }
     return false;
+  }
+
+  private async findOneById(id: string): Promise<AccountOrmEntity | undefined> {
+    const account = await this.accountRepo.findOne({
+      where: { id },
+    });
+
+    return account;
+  }
+
+  async findOneByIdOrThrow(id: string): Promise<Account> {
+    const account = await this.findOneById(id);
+    if (!account) {
+      throw new NotFoundException(`Account with ID '${id}' not found`);
+    }
+    return this.mapper.toDomainEntity(account);
   }
 }
