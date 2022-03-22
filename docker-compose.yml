@@ -1,25 +1,43 @@
 version: '3.7'
 services:
-  api-dev:
-    container_name: core-bank
-    restart: always
-    build:
-      context: .
-      target: production
-    env_file: .env.dev
-    ports:
-      - 3000:3000
-    depends_on:
-      - postgres-dev
-
   postgres-dev:
     container_name: postgres
     image: postgres:14
     restart: always
-    env_file: .env.dev
+    env_file: .env
     ports:
       - 5432:5432
 
+  api-dev:
+    container_name: core-bank
+    restart: always
+    depends_on:
+      - postgres-dev
+    build:
+      context: .
+      target: production
+    env_file: .env
+    volumes:
+      - .:/usr/src/app
+      - /usr/src/app/node_modules
+    ports:
+      - 3000:3000
+    command: 'node dist/main.js'
+
+  migrations:
+    container_name: migration
+    restart: on-failure
+    depends_on:
+      - postgres-dev
+      - api-dev
+    build:
+      context: .
+    env_file: .env
+    volumes:
+      - .:/usr/src/app
+      - /usr/src/app/node_modules
+    command: 'ts-node --transpile-only ./node_modules/typeorm/cli.js migration:run --config dist/infrastructure/database/database.config'
+    
   pgAdmin:
     container_name: pgadmin
     image: dpage/pgadmin4
